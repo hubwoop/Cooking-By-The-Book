@@ -142,7 +142,7 @@ class MetaDisplay {
 		foreach ( $ingredients as $ingredient ) {
 			$body .= "<tr>";
 			foreach ( $ingredient as $part ) {
-				$body .= "<td>" . html_entity_decode( $part ) . "</td>";
+				$body .= "<td>" . esc_html( $part ) . "</td>";
 			}
 			$body .= "</tr>";
 		}
