@@ -1,0 +1,36 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install @wordpress/env
+        run: npm install -g @wordpress/env
+
+      - name: Start WordPress environment
+        run: wp-env start
+
+      - name: Verify plugin is active
+        run: wp-env run cli wp plugin list --status=active | grep "cooking-by-the-book"
