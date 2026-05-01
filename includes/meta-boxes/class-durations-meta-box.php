@@ -49,8 +49,10 @@ class DurationsMetaBox implements iMetaBox {
 
 	public function display( WP_Post $post ): void {
 		$overall_duration = 0;
+		$all_meta = get_post_meta( $post->ID );
 		foreach ( $this->duration_types as $duration_type => $duration_properties ) {
-			$meta                                           = get_post_meta( $post->ID, '_cbtb_durations_' . $duration_type . '_time', true );
+			$meta_key = '_cbtb_durations_' . $duration_type . '_time';
+			$meta = isset( $all_meta[ $meta_key ] ) && isset( $all_meta[ $meta_key ][0] ) ? $all_meta[ $meta_key ][0] : '';
 			$this->duration_types[ $duration_type ]["meta"] = $meta;
 			$overall_duration                               += intval( $meta );
 		}
