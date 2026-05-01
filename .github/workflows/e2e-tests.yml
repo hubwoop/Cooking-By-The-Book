@@ -32,4 +32,4 @@ jobs:
         run: wp-env start
 
       - name: Verify plugin is active
-        run: wp-env run cli wp plugin list --status=active | grep "cooking-by-the-book"
+        run: wp-env run cli wp plugin list --status=active | grep -i "cooking-by-the-book"
