@@ -1,0 +1,7 @@
+{
+  "core": null,
+  "testsEnvironment": false,
+  "plugins": [
+    "."
+  ]
+}
