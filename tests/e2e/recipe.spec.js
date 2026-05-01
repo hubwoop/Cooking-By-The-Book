@@ -2,7 +2,7 @@ const { test, expect } = require( '@wordpress/e2e-test-utils-playwright' );
 
 test.describe( 'Cooking By The Book Recipe E2E', () => {
     test.beforeAll( async ({ requestUtils }) => {
-        await requestUtils.activatePlugin( 'Cooking-By-The-Book' );
+        await requestUtils.activatePlugin( 'cooking-by-the-book' );
     });
 
     test( 'Should create a new recipe post', async ({ admin, editor, page }) => {
