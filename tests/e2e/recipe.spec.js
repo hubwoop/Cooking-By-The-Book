@@ -5,6 +5,10 @@ test.describe( 'Cooking By The Book Recipe E2E', () => {
         await requestUtils.activatePlugin( 'cooking-by-the-book' );
     });
 
+    test.afterAll( async ({ requestUtils }) => {
+        await requestUtils.deactivatePlugin( 'cooking-by-the-book' );
+    });
+
     test( 'Should create a new recipe post', async ({ admin, editor, page }) => {
         await admin.createNewPost( { postType: 'cbtb_recipe' } );
 
